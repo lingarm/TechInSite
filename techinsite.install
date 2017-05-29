@@ -46,8 +46,14 @@ function techinsite_install() {
 		)
 		);
 		
-		$parent = array('УСЗН', 'Терцентр', 'Інтернатна установа', 'Інше');
-		save_parent_terms($parent, $vid);
+		$parent = array(
+			array('id_sqlite' =>  4, 'name' => 'ДСЗН'),
+			array('id_sqlite' =>  null, 'name' => 'УСЗН'),
+			array('id_sqlite' =>  null, 'name' => 'Терцентр'),
+			array('id_sqlite' =>  null, 'name' => 'Інтернатна установа'),
+			array('id_sqlite' =>  null, 'name' => 'Інше'),
+		);
+		
 		$nested_uszn = array(
 			array('id_sqlite' =>  1, 'name' => '2301 Олександрівський район'),
 			array('id_sqlite' =>  6, 'name' => '2302 Шевченківський район'),
@@ -135,7 +141,7 @@ function techinsite_install() {
 			array('id_sqlite' => 80, 'name' => 'Запорізький обласний центр охорони праці'),
 		);
 		
-		
+		save_parent_terms($parent, $vid);
 		save_nested_terms($nested_uszn, $vid, 'УСЗН', $vocabulary_machine_name);
 		save_nested_terms($nested_ter, $vid, 'Терцентр', $vocabulary_machine_name);
 		save_nested_terms($nested_internats, $vid, 'Інтернатна установа', $vocabulary_machine_name);
@@ -151,7 +157,8 @@ function save_parent_terms($terms, $vid) {
 	$count = 0;
 	foreach($terms as $t) {
 		$item = (object) array(
-			'name' => $t,
+			'name' => $t['name'],
+			'id_sqlite' => array('und' => array(0 => array('value' => $t['id_sqlite']),),),
 			'vid' => $vid,
 			'weight' => $count,
 		);
