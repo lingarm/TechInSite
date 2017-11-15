@@ -51,7 +51,7 @@ function techinsite_install() {
 			array('id_sqlite' =>  null, 'name' => 'УСЗН'),
 			array('id_sqlite' =>  null, 'name' => 'Терцентр'),
 			array('id_sqlite' =>  null, 'name' => 'Інтернатна установа'),
-			array('id_sqlite' =>  null, 'name' => 'Інше'),
+			array('id_sqlite' =>  81, 'name' => 'Інше'),
 		);
 		
 		$nested_uszn = array(
@@ -131,21 +131,10 @@ function techinsite_install() {
 			array('id_sqlite' => 48, 'name' => 'Преславський ПНІ'),
 		);
 		
-		$nested_others = array(
-			array('id_sqlite' => 74, 'name' => 'Запорізький обласний центр професійної реабілітації інвалідів'),
-			array('id_sqlite' => 75, 'name' => 'Запорізький обласний центр соціальної реабілітації дітей-інвалідів'),
-			array('id_sqlite' => 76, 'name' => 'Центр соціальної реабілітації дітей-інвалідів Бердянської міської ради'),
-			array('id_sqlite' => 77, 'name' => 'Центр реабілітації змішаного типу для дітей-інвалідів Мелітопольської районної ради'),
-			array('id_sqlite' => 78, 'name' => 'Центр соціальної реабілітації дітей-інвалідів Приморської районної ради'),
-			array('id_sqlite' => 79, 'name' => 'Соцкомуненергія'),
-			array('id_sqlite' => 80, 'name' => 'Запорізький обласний центр охорони праці'),
-		);
-		
 		save_parent_terms($parent, $vid);
 		save_nested_terms($nested_uszn, $vid, 'УСЗН', $vocabulary_machine_name);
 		save_nested_terms($nested_ter, $vid, 'Терцентр', $vocabulary_machine_name);
 		save_nested_terms($nested_internats, $vid, 'Інтернатна установа', $vocabulary_machine_name);
-		save_nested_terms($nested_others, $vid, 'Інше', $vocabulary_machine_name);
 	}
 	
 }

@@ -24,6 +24,8 @@ function theme_simple($vars) {
     'rows'  => $rows,
     'empty' => t('На даний момент Вашої техніки в ремонті немає', array()),
   ));
+
+  $output .= theme('pager');
  
   $output .= drupal_render_children($form);
   return $output;
@@ -55,6 +57,8 @@ function theme_cartridge($vars) {
     'empty' => t('На даний момент Ваших картриджів в заправці немає', array()),
   ));
  
+  $output .= theme('pager');
+
   $output .= drupal_render_children($form);
   return $output;
 }

@@ -40,7 +40,7 @@ function techinsite_theme() {
 	->condition('t.status', 4, '!=')
 	->condition('t.customer', $customer, '==')
     ->extend('PagerDefault')
-    ->limit(20)
+    ->limit(9999)
     ->extend('TableSort')
     ->orderByHeader($header)
     ->execute();
@@ -93,7 +93,8 @@ function techinsite_page($form, &$form_state) {
     if ($parent_tid === 'none' || !($terms = taxonomy_get_tree($vid, $parent_tid, 1))) {
       break;
     }
-	$count++;
+
+      $count++;
     $options = array('none' => '-- Оберіть організацію --');
     foreach ($terms as $term) {
       $options[$term->tid] = $term->name;
